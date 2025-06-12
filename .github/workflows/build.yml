@@ -1,0 +1,29 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential zip unzip openjdk-11-jdk python3-pip python3-setuptools python3-wheel libffi-dev libssl-dev libncurses5
+          pip3 install --upgrade pip
+          pip3 install buildozer cython
+
+      - name: Build APK
+        run: |
+          buildozer init || true
+          buildozer -v android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: armproclone-apk
+          path: bin/*.apk
