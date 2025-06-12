@@ -15,7 +15,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y build-essential zip unzip openjdk-17-jdk python3-pip \
-            python3-setuptools python3-wheel libffi-dev libssl-dev libtinfo6 libncurses5
+            python3-setuptools python3-wheel libffi-dev libssl-dev libncurses6 libtinfo6
           pip3 install --upgrade pip
           pip3 install buildozer cython
 
