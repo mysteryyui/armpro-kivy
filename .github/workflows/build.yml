@@ -13,7 +13,7 @@ jobs:
       - name: Setup dependencies
         run: |
           sudo apt update
-          sudo apt install -y build-essential zip unzip openjdk-11-jdk python3-pip python3-setuptools python3-wheel libffi-dev libssl-dev libncurses5
+          sudo apt install -y build-essential zip unzip openjdk-11-jdk python3-pip python3-setuptools python3-wheel libffi-dev libssl-dev
           pip3 install --upgrade pip
           pip3 install buildozer cython
 
