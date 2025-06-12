@@ -15,9 +15,8 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install -y openjdk-17-jdk wget unzip zip \
-            build-essential python3-pip libffi-dev libssl-dev zlib1g-dev \
-            libtinfo6 libncursesw6
+          sudo apt install -y openjdk-17-jdk wget unzip zip build-essential \
+            python3-pip libffi-dev libssl-dev zlib1g-dev libtinfo6 libncursesw6
           pip3 install --upgrade pip
           pip3 install buildozer cython
 
@@ -28,7 +27,7 @@ jobs:
         run: |
           mkdir -p $HOME/android-sdk/cmdline-tools
           cd $HOME/android-sdk/cmdline-tools
-          wget -q https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+          wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
           unzip -q commandlinetools-linux-9477386_latest.zip
           mv cmdline-tools latest
 
