@@ -7,20 +7,23 @@ on:
 jobs:
   build-apk:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Setup dependencies
         run: |
           sudo apt update
-          sudo apt install -y build-essential zip unzip openjdk-11-jdk python3-pip python3-setuptools python3-wheel libffi-dev libssl-dev
+          sudo apt install -y build-essential zip unzip openjdk-17-jdk python3-pip python3-setuptools python3-wheel libffi-dev libssl-dev
           pip3 install --upgrade pip
           pip3 install buildozer cython
 
       - name: Build APK
         run: |
+          export PATH=$PATH:$HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin
           buildozer init || true
-          buildozer -v android debug
+          buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
